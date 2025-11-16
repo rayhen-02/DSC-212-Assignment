@@ -1,3 +1,7 @@
+**Name:** Rayhen Prakash R S
+
+**Roll no.:** IMS24188
+
 **Karate_club_graph_Modularity**
 
 This project aims to find the hidden communities in a real world dataset( Zachary's Karate Club network) using spectral bipartition algorithm and doing it recursivly.
