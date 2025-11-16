@@ -1,62 +1,80 @@
-# DSC-212-Assignment
-Project Summary (Concise)
+🥋 **Community Detection on Zachary’s Karate Club**
 
-This project applies spectral modularity bisection to detect communities in Zachary’s Karate Club graph, while tracking how node centrality measures change during recursive splits.
+Spectral Modularity Bisection + Centrality Evolution Tracking
 
-Core Work Completed
+This project applies a spectral modularity community detection algorithm to the well-known Zachary’s Karate Club network. Beyond producing final communities, it also analyzes how node-level centrality measures change during each recursive split.
 
-Constructed the global and subgraph modularity matrix.
+🔍 Key Features
 
-Implemented recursive spectral bisection using the leading eigenvector.
+Modularity Matrix (B) for global and subgraph splits
 
-Tracked, at each split step:
+Recursive spectral bisection using the leading eigenvector
 
-Degree
+Per-iteration tracking of:
 
-Betweenness
+Degree Centrality
 
-Closeness
+Betweenness Centrality
 
-Clustering coefficient
+Closeness Centrality
 
-Visualized:
+Clustering Coefficient
 
-Graph evolution (“time-lapse” community splits)
+Graph evolution visualizations with fixed layout and community colors
 
-Metric evolution line plots for all nodes
+Metric evolution plots showing how node importance changes over time
 
-Produced a final summary table and interpretation.
+Final community summary with sizes and average metrics
 
-Algorithm Basis
+📘 Method Overview
 
-Follows the modularity maximization method from Newman (2006) using eigenvectors of the modularity matrix B, applied recursively to subcommunities. Dataset from Zachary (1977).
+The implementation follows Newman’s modularity maximization algorithm:
 
-Process Overview
+Start with the full graph as a single community.
 
-Begin with the entire graph as one community.
+Compute the refined modularity matrix 
+𝐵
+(
+𝐶
+)
+B(C) of a subgraph.
 
-Compute subgraph modularity matrix.
+Find the largest eigenvalue and leading eigenvector.
 
-Get the largest eigenvalue and eigenvector.
+If the eigenvalue > 0, split nodes by eigenvector sign (+ / –).
 
-If eigenvalue > 0, split based on vector signs; otherwise mark as final.
+Push resulting subcommunities back into the queue.
 
-Continue until no further splits improve modularity.
+Continue until no split increases modularity.
 
-Results & Key Insights
+📊 Result Summary
 
-Final output: 5 communities formed over 4 successful splits.
+Final Communities: 5
 
-First split separated the two historic factions (around Node 0 and Node 33).
+Successful Splits: 4
 
-Betweenness centrality revealed major role shifts:
+First split clearly separated the two factions led by Node 0 and Node 33.
 
-Leaders (0 and 33) began as high-betweenness brokers.
+Later splits identified smaller cohesive subgroups and isolated outliers.
 
-Their betweenness dropped to near zero after separation, reflecting their shift to local community leaders.
+🧠 Centrality Insight
 
-Demonstrated that node importance is context-dependent and changes as the network is partitioned.
+Betweenness centrality showed the most dramatic change:
 
-Final Conclusion
+Nodes 0 and 33 began as global brokers linking factions.
 
-Community detection is not only about finding groups, but understanding how node roles evolve as structure becomes more localized. This project shows that centrality is dynamic, not fixed, and depends on the level of community resolution at which the network is studied
+After the first split, their betweenness dropped sharply, revealing a transition to local leaders within isolated communities.
+
+🧾 Conclusion
+
+This project demonstrates that node importance is not static. Centrality values are structurally dependent and shift as the network moves from a global view to smaller, more cohesive communities. Community detection is therefore not only about where nodes belong, but also how their roles evolve.
+
+📚 References
+
+Algorithm:
+Newman, M. E. J. (2006). Modularity and community structure in networks. PNAS, 103(23), 8577–8582.
+
+Dataset:
+Zachary, W. W. (1977). An information flow model for conflict and fission in small groups. Journal of Anthropological Research, 33(4), 452–473.
+
+
